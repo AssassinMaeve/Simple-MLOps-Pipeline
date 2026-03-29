@@ -6,6 +6,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 import logging
 
+# Step 1: Load the configuration file (the 'Instruction Manual')
+# This tells the code where to find data and how to process it.
 def load_config(config_path):
     with open(config_path, 'r') as f:
         return yaml.safe_load(f)
@@ -13,7 +15,7 @@ def load_config(config_path):
 def run_preprocessing():
     config = load_config('config/config.yaml')
     
-    # Setup logging
+    # Setup logging to keep track of what the code is doing
     os.makedirs(os.path.dirname(config['paths']['log_path']), exist_ok=True)
     logging.basicConfig(
         filename=config['paths']['log_path'],
@@ -23,11 +25,12 @@ def run_preprocessing():
     logger = logging.getLogger("Preprocess")
     logger.info("Starting preprocessing with data split...")
 
-    # Load raw data
+    # Load raw data (the messy signals from space)
     raw_df = pd.read_csv(config['paths']['raw_data'])
     target = config['preprocessing']['target_column']
     
-    # Split data before any processing to prevent leakage
+    # Step 2: Split data into "Study Material" (Train) and "Exam Questions" (Test)
+    # This prevents the Detective from 'cheating' by seeing the exam answers early!
     train_df, test_df = train_test_split(
         raw_df, 
         test_size=config['preprocessing']['test_size'], 
@@ -40,12 +43,14 @@ def run_preprocessing():
     X_test = test_df.drop(columns=[target])
     y_test = test_df[target]
 
-    # Handle missing values
+    # Step 3: Handle missing values (the 'Cleaning' step)
+    # Sometimes space signals are incomplete. We fill in the gaps with the 'Average' (mean) value.
     imputer = SimpleImputer(strategy=config['preprocessing']['impute_strategy'])
     X_train_imputed = pd.DataFrame(imputer.fit_transform(X_train), columns=X_train.columns)
     X_test_imputed = pd.DataFrame(imputer.transform(X_test), columns=X_test.columns)
 
-    # Scaling
+    # Step 4: Scaling (the 'Standardization' step)
+    # We make sure all measurements use the same scale so the Detective doesn't get confused by big numbers.
     if config['preprocessing']['scaling']:
         scaler = StandardScaler()
         X_train_scaled = pd.DataFrame(scaler.fit_transform(X_train_imputed), columns=X_train.columns)
@@ -54,7 +59,7 @@ def run_preprocessing():
         X_train_scaled = X_train_imputed
         X_test_scaled = X_test_imputed
 
-    # Save processed data
+    # Step 5: Save the cleaned data for the next stage of the factory line
     processed_dir = config['paths']['processed_dir']
     os.makedirs(processed_dir, exist_ok=True)
     

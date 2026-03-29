@@ -8,14 +8,13 @@ def load_config(config_path):
     with open(config_path, 'r') as f:
         return yaml.safe_load(f)
 
-def run_step(script_path, description):
-    print(f"--- Running {description} ---")
-    result = subprocess.run([sys.executable, script_path], capture_output=True, text=True)
+def run_step(step_name, command):
+    print(f"\n--- Running {step_name} ---")
+    # The Space Detective executes the command and watches for any anomalies
+    result = subprocess.run(command, shell=True)
     if result.returncode != 0:
-        print(f"Error in {description}:")
-        print(result.stderr)
+        print(f"❌ Error in {step_name}. Factory line halted.")
         return False
-    print(result.stdout)
     return True
 
 def main():
@@ -26,7 +25,7 @@ def main():
 
     config = load_config(config_path)
     
-    # Setup logging
+    # Setup central logging for the whole factory line
     os.makedirs(os.path.dirname(config['paths']['log_path']), exist_ok=True)
     logging.basicConfig(
         filename=config['paths']['log_path'],
@@ -36,22 +35,28 @@ def main():
     logger = logging.getLogger("Pipeline")
     logger.info("Starting MLOps Pipeline Orchestrator")
 
-    steps = [
-        ('src/preprocess.py', 'Preprocessing'),
-        ('src/train.py', 'Training'),
-        ('src/evaluate.py', 'Evaluation')
-    ]
+    # Step 2: Run each stage of the factory line in order
+    # 1. Cleanup & Preparation
+    if not run_step("Preprocessing", "python src/preprocess.py"):
+        logger.error("Pipeline failed at step: Preprocessing")
+        return
 
-    for script, desc in steps:
-        if not run_step(script, desc):
-            logger.error(f"Pipeline failed at step: {desc}")
-            print(f"Pipeline failed at step: {desc}")
-            return
+    # 2. Learning/Training
+    if not run_step("Training", "python src/train.py"):
+        logger.error("Pipeline failed at step: Training")
+        return
 
+    # 3. Exam/Evaluation
+    if not run_step("Evaluation", "python src/evaluate.py"):
+        logger.error("Pipeline failed at step: Evaluation")
+        return
+
+    # Success! The Space Detective confirms the mission is complete.
     logger.info("Pipeline completed successfully.")
     print("\n==================================")
-    print("Pipeline Execution Successful!")
-    print("==================================")
+    print("✨ Factory Line Successful!")
+    print("The Space Detective is ready.")
+    print("==================================\n")
 
 if __name__ == "__main__":
     main()

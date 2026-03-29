@@ -48,3 +48,13 @@
 2026-03-29 17:56:13,903 - Evaluate - INFO - Starting model evaluation and visualization...
 2026-03-29 17:56:14,570 - Evaluate - INFO - Evaluation and visualization complete. Artifacts saved.
 2026-03-29 17:56:14,850 - Pipeline - INFO - Pipeline completed successfully.
+2026-03-29 20:10:50,925 - Pipeline - INFO - Starting MLOps Pipeline Orchestrator
+2026-03-29 20:10:53,528 - Preprocess - INFO - Starting preprocessing with data split...
+2026-03-29 20:10:53,553 - Preprocess - INFO - Data split into train and test sets (test_size=0.2)
+2026-03-29 20:10:53,645 - Preprocess - INFO - Preprocessing complete. Artifacts saved.
+2026-03-29 20:10:55,115 - Train - INFO - Starting model training...
+2026-03-29 20:10:56,392 - Train - INFO - Model training complete.
+2026-03-29 20:10:56,410 - Train - INFO - Model saved to models/model.pkl
+2026-03-29 20:10:58,181 - Evaluate - INFO - Starting model evaluation and visualization...
+2026-03-29 20:10:58,918 - Evaluate - INFO - Evaluation and visualization complete. Artifacts saved.
+2026-03-29 20:10:59,225 - Pipeline - INFO - Pipeline completed successfully.

@@ -1,0 +1,50 @@
+2026-03-29 16:43:03,574 - Pipeline - INFO - Starting MLOps Pipeline Orchestrator
+2026-03-29 16:43:18,191 - Preprocess - INFO - Starting preprocessing...
+2026-03-29 16:43:18,261 - Preprocess - INFO - Handled missing values using mean strategy
+2026-03-29 16:43:18,263 - Preprocess - INFO - Features scaled using StandardScaler
+2026-03-29 16:43:18,481 - Preprocess - INFO - Processed data saved to data/processed
+2026-03-29 16:43:20,463 - Train - INFO - Starting model training...
+2026-03-29 16:43:22,210 - Train - INFO - Model training complete.
+2026-03-29 16:43:22,255 - Train - INFO - Model saved to models/model.pkl
+2026-03-29 16:43:23,751 - Evaluate - INFO - Starting model evaluation...
+2026-03-29 16:43:24,087 - Pipeline - ERROR - Pipeline failed at step: Evaluation
+2026-03-29 16:48:24,476 - Pipeline - INFO - Starting MLOps Pipeline Orchestrator
+2026-03-29 16:48:25,659 - Preprocess - INFO - Starting preprocessing with data split...
+2026-03-29 16:48:25,672 - Preprocess - INFO - Data split into train and test sets (test_size=0.2)
+2026-03-29 16:48:25,765 - Preprocess - INFO - Preprocessing complete. Artifacts saved.
+2026-03-29 16:48:27,118 - Train - INFO - Starting model training...
+2026-03-29 16:48:28,350 - Train - INFO - Model training complete.
+2026-03-29 16:48:28,367 - Train - INFO - Model saved to models/model.pkl
+2026-03-29 16:48:29,643 - Evaluate - INFO - Starting model evaluation...
+2026-03-29 16:48:29,796 - Evaluate - INFO - Evaluation complete. Metrics saved to logs/metrics.json
+2026-03-29 16:48:29,952 - Pipeline - INFO - Pipeline completed successfully.
+2026-03-29 16:49:21,509 - Pipeline - INFO - Starting MLOps Pipeline Orchestrator
+2026-03-29 16:49:22,776 - Preprocess - INFO - Starting preprocessing with data split...
+2026-03-29 16:49:22,789 - Preprocess - INFO - Data split into train and test sets (test_size=0.2)
+2026-03-29 16:49:22,880 - Preprocess - INFO - Preprocessing complete. Artifacts saved.
+2026-03-29 16:49:24,377 - Train - INFO - Starting model training...
+2026-03-29 16:49:25,669 - Train - INFO - Model training complete.
+2026-03-29 16:49:25,688 - Train - INFO - Model saved to models/model.pkl
+2026-03-29 16:49:27,075 - Evaluate - INFO - Starting model evaluation...
+2026-03-29 16:49:27,242 - Evaluate - INFO - Evaluation complete. Metrics saved to logs/metrics.json
+2026-03-29 16:49:27,405 - Pipeline - INFO - Pipeline completed successfully.
+2026-03-29 17:11:04,569 - Pipeline - INFO - Starting MLOps Pipeline Orchestrator
+2026-03-29 17:11:14,821 - Preprocess - INFO - Starting preprocessing with data split...
+2026-03-29 17:11:14,843 - Preprocess - INFO - Data split into train and test sets (test_size=0.2)
+2026-03-29 17:11:15,004 - Preprocess - INFO - Preprocessing complete. Artifacts saved.
+2026-03-29 17:11:16,757 - Train - INFO - Starting model training...
+2026-03-29 17:11:18,017 - Train - INFO - Model training complete.
+2026-03-29 17:11:18,035 - Train - INFO - Model saved to models/model.pkl
+2026-03-29 17:11:20,620 - Evaluate - INFO - Starting model evaluation and visualization...
+2026-03-29 17:11:22,169 - Evaluate - INFO - Evaluation and visualization complete. Artifacts saved.
+2026-03-29 17:11:22,515 - Pipeline - INFO - Pipeline completed successfully.
+2026-03-29 17:56:08,223 - Pipeline - INFO - Starting MLOps Pipeline Orchestrator
+2026-03-29 17:56:09,467 - Preprocess - INFO - Starting preprocessing with data split...
+2026-03-29 17:56:09,480 - Preprocess - INFO - Data split into train and test sets (test_size=0.2)
+2026-03-29 17:56:09,567 - Preprocess - INFO - Preprocessing complete. Artifacts saved.
+2026-03-29 17:56:10,939 - Train - INFO - Starting model training...
+2026-03-29 17:56:12,193 - Train - INFO - Model training complete.
+2026-03-29 17:56:12,210 - Train - INFO - Model saved to models/model.pkl
+2026-03-29 17:56:13,903 - Evaluate - INFO - Starting model evaluation and visualization...
+2026-03-29 17:56:14,570 - Evaluate - INFO - Evaluation and visualization complete. Artifacts saved.
+2026-03-29 17:56:14,850 - Pipeline - INFO - Pipeline completed successfully.

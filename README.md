@@ -28,7 +28,11 @@ Welcome! This project is a simple, step-by-step guide to building a "Machine Lea
 ### 1. Install the Tools
 Run this in your terminal to install the necessary libraries:
 ```bash
-pip install pandas scikit-learn pyyaml joblib matplotlib seaborn
+pip install -r requirements.txt
+```
+or 
+```bash
+uv add -r requirements.txt
 ```
 
 ### 2. Run the Factory Line
